@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Utility &amp; Energy Invoices → CSV | Multi‑Site Allocation</title>
+  <meta name="description" content="Extract meter readings, tariffs, taxes &amp; fees; allocate by site/cost center. Anomaly flags. Batch/API."/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body { margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; line-height: 1.5; background:#fff; color:#0b0b0c; }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    :root { --radius:16px; --border:#ececee; --card:#f7f7f8; --muted:#6b7280; --accent:#ff7a1a; --accent2:#ffb347; --shadow:0 10px 30px rgba(0,0,0,.08); }
+    .container { width:100%; max-width:1160px; margin:0 auto; padding:0 20px; }
+    .topbar { position: sticky; top:0; z-index:40; backdrop-filter:saturate(1.2) blur(8px); background: color-mix(in hsl, #fff 80%, transparent); border-bottom:1px solid var(--border); }
+    .topbar-inner { display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 0; }
+    .brand { display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.3px; }
+    .brand-badge { width:28px; height:28px; border-radius:8px; background:linear-gradient(135deg, var(--accent), var(--accent2)); box-shadow:var(--shadow); }
+    .hero { padding:64px 0 28px; background-image: radial-gradient(600px 260px at 15% 10%, rgba(255,122,26,.10), transparent); }
+    .hero-grid { display:grid; grid-template-columns:1.05fr .95fr; gap:36px; align-items:center; }
+    .eyebrow { display:inline-flex; gap:8px; font-weight:700; font-size:12px; text-transform:uppercase; letter-spacing:.14em; color:var(--muted); }
+    h1 { font-size: clamp(28px, 5vw, 48px); margin:10px 0 8px; line-height:1.05; }
+    .subhead { font-size: clamp(15px, 2.2vw, 20px); color:var(--muted); max-width:60ch; }
+    .cta-row { display:flex; gap:12px; flex-wrap:wrap; margin-top:22px; }
+    .btn { display:inline-flex; align-items:center; gap:10px; padding:14px 18px; border-radius:12px; border:1px solid var(--border); background:var(--card); color:#0b0b0c; font-weight:700; cursor:pointer; }
+    .btn.primary { background: linear-gradient(135deg, var(--accent), var(--accent2)); color:#0a0a0a; border-color:transparent; }
+    .viz { border:1px solid var(--border); background:var(--card); border-radius:16px; padding:22px; box-shadow:var(--shadow); overflow:hidden; min-height:300px; }
+    .viz-grid { display:grid; grid-template-columns:1fr 64px 1fr; gap:16px; align-items:center; }
+    .paper, .sheet { border-radius:12px; border:1px solid var(--border); background:#fff; color:#111; box-shadow:0 10px 25px rgba(0,0,0,.06); }
+    .paper { height:220px; padding:14px; }
+    .sheet { height:220px; overflow:auto; }
+    .pdf-lines { height:6px; background:#e6eaf2; margin:8px 0; border-radius:6px; animation:shimmer 2.8s linear infinite; }
+    @keyframes shimmer { 0%{opacity:.6} 50%{opacity:1} 100%{opacity:.6} }
+    .arrow { display:grid; place-items:center; }
+    .arrow .pill { width:46px; height:46px; border-radius:9999px; background:linear-gradient(135deg, var(--accent), var(--accent2)); animation:pulse 2.4s ease-in-out infinite; }
+    @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.08)} }
+    .section { padding:42px 0; }
+    .kicker { font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); font-size:12px; }
+    .h2 { font-size: clamp(22px, 3.5vw, 32px); margin:6px 0 14px; }
+    .features { display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:16px; }
+    .card { border:1px solid var(--border); background:var(--card); border-radius:16px; padding:18px; box-shadow:var(--shadow); }
+    .card h3 { margin:6px 0 6px; font-size:18px; }
+    .muted { color:var(--muted); }
+    .steps { display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:16px; counter-reset: step; }
+    .step { border:1px solid var(--border); background:var(--card); border-radius:16px; padding:18px; position:relative; box-shadow:var(--shadow); }
+    .step::before { counter-increment:step; content:counter(step); position:absolute; top:12px; right:12px; width:26px; height:26px; border-radius:999px; display:grid; place-items:center; font-weight:800; background:linear-gradient(135deg, var(--accent), var(--accent2)); color:#0b0b0c; }
+    .uploader { border:2px dashed var(--border); background: color-mix(in sRGB, var(--card) 80%, transparent); border-radius:16px; padding:22px; text-align:center; }
+    .uploader .hint { font-size:12px; color:var(--muted); }
+    .trust { display:grid; grid-template-columns:repeat(5, minmax(0, 1fr)); gap:16px; align-items:center; }
+    .trust .pill { border:1px solid var(--border); background:var(--card); border-radius:12px; padding:12px 14px; text-align:center; font-weight:700; box-shadow:var(--shadow); }
+    .pricing { display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:16px; }
+    details { border:1px solid var(--border); background:var(--card); border-radius:16px; padding:14px 16px; box-shadow:var(--shadow); }
+    summary { cursor:pointer; font-weight:700; }
+    .footer { border-top:1px solid var(--border); padding:22px 0 40px; color:var(--muted); font-size:13px; }
+    @media (max-width: 980px) { .hero-grid{grid-template-columns:1fr} .features,.steps,.pricing,.trust{grid-template-columns:1fr 1fr} }
+    @media (max-width: 640px) { .features,.steps,.pricing,.trust{grid-template-columns:1fr} .topbar-inner{flex-wrap:wrap} }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <span class="brand-badge" aria-hidden="true"></span>
+        <span>MiniAi Paperless</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow" id="eyebrow">Property • Facility Management</span>
+          <h1 id="heroH1">Utility &amp; Energy Invoices → CSV (Multi‑Site, Meter Readings)</h1>
+          <p class="subhead" id="subhead">Parse electricity, water, gas, and waste invoices into clean CSV with site allocation and anomaly flags.</p>
+          <div class="cta-row">
+            <a class="btn primary" href="#uploader" id="ctaPrimary">Upload utility bill — free</a>
+            <a class="btn" href="#book" id="ctaSecondary">Get anomaly report</a>
+          </div>
+          <p class="muted" style="margin-top:10px" id="trustNote">Secure processing • Logs retained</p>
+        </div>
+        <div>
+          <div class="viz">
+            <div class="viz-grid">
+              <div class="paper">
+                <div class="pdf-lines" style="width:70%"></div>
+                <div class="pdf-lines" style="width:55%"></div>
+                <div class="pdf-lines" style="width:82%"></div>
+                <div class="pdf-lines" style="width:64%"></div>
+                <div class="pdf-lines" style="width:90%"></div>
+                <div class="pdf-lines" style="width:58%"></div>
+                <div class="pdf-lines" style="width:76%"></div>
+                <div class="pdf-lines" style="width:50%"></div>
+              </div>
+              <div class="arrow"><div class="pill" title="Parse"></div></div>
+              <div class="sheet">
+                <table class="table" aria-label="Sample CSV">
+                  <thead>
+                    <tr><th>Meter</th><th>Read</th><th>Unit</th><th>Tariff</th><th>Tax</th></tr>
+                  </thead>
+                  <tbody id="sampleRows">
+                    <tr><td>E‑123</td><td>15420</td><td>kWh</td><td>TOU‑B</td><td>5%</td></tr>
+                    <tr><td>W‑882</td><td>310</td><td>m³</td><td>Fixed</td><td>0%</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="section">
+      <div class="container">
+        <div class="kicker">Why it works</div>
+        <h2 class="h2" id="featuresTitle">From meters to allocated CSV</h2>
+        <div class="features">
+          <div class="card">
+            <div class="kicker" id="f1Kicker">Meters</div>
+            <h3 id="f1Title">Extract meter readings</h3>
+            <p class="muted" id="f1Text">Tariffs, taxes, and fees captured reliably.</p>
+          </div>
+          <div class="card">
+            <div class="kicker" id="f2Kicker">Allocation</div>
+            <h3 id="f2Title">Split by site/cost center</h3>
+            <p class="muted" id="f2Text">Auto allocate across properties/centers.</p>
+          </div>
+          <div class="card">
+            <div class="kicker" id="f3Kicker">Exports</div>
+            <h3 id="f3Title">Excel/CSV &amp; AP systems</h3>
+            <p class="muted" id="f3Text">Batch/API for property &amp; facility teams.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS + UPLOADER -->
+    <section class="section" id="uploader">
+      <div class="container">
+        <div class="kicker">How it works</div>
+        <h2 class="h2" id="stepsTitle">Collect → Parse → Allocate</h2>
+        <div class="steps">
+          <div class="step">
+            <h3 id="s1Title">Upload last month’s bills</h3>
+            <p class="muted" id="s1Text">Electricity, water, gas, waste.</p>
+          </div>
+          <div class="step">
+            <h3 id="s2Title">Parse meters &amp; tariffs</h3>
+            <p class="muted" id="s2Text">Catch anomalies and abnormal fees.</p>
+          </div>
+          <div class="step">
+            <h3 id="s3Title">Allocate &amp; export</h3>
+            <p class="muted" id="s3Text">Split by site/cost center to CSV.</p>
+          </div>
+        </div>
+
+        <div class="uploader" aria-live="polite">
+          <p><strong>Drag &amp; drop</strong> your PDFs here or <label style="text-decoration:underline; cursor:pointer"><input type="file" id="file" accept="application/pdf,image/*" hidden multiple> browse</label></p>
+          <p class="hint" id="uploadHint">First bill is free. Subsequent files may require a corporate email.</p>
+          <div id="fileInfo" class="muted" style="margin-top:8px"></div>
+        </div>
+
+        <div class="cta-row" style="margin-top:16px">
+          <a class="btn primary" href="#" id="ctaConvert">Convert my bill</a>
+          <a class="btn" href="#" id="ctaAlt">Batch/API for multi‑site</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRUST / INTEGRATIONS -->
+    <section class="section">
+      <div class="container">
+        <div class="kicker">Integrations</div>
+        <h2 class="h2" id="integrationsTitle">Works with your AP &amp; energy tools</h2>
+        <div class="trust" id="trustPills">
+          <div class="pill">Excel</div>
+          <div class="pill">CSV</div>
+          <div class="pill">Batch</div>
+          <div class="pill">API</div>
+          <div class="pill">Anomaly Flags</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING (teaser) -->
+    <section class="section">
+      <div class="container">
+        <div class="kicker">Pricing</div>
+        <h2 class="h2">Start free, scale when ready</h2>
+        <div class="pricing">
+          <div class="card">
+            <div class="kicker">Starter</div>
+            <h3 id="p1Title">First file free</h3>
+            <p class="muted" id="p1Text">Great for quick validation. No login required.</p>
+          </div>
+          <div class="card">
+            <div class="kicker">Pro</div>
+            <h3 id="p2Title">Batch &amp; API</h3>
+            <p class="muted" id="p2Text">For teams &amp; multi‑entity groups. Priority support.</p>
+          </div>
+          <div class="card">
+            <div class="kicker">Add‑ons</div>
+            <h3 id="p3Title">Custom mappings</h3>
+            <p class="muted" id="p3Text">Units, taxes/fees, vendor normalization.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section">
+      <div class="container">
+        <div class="kicker">FAQ</div>
+        <h2 class="h2">Common questions</h2>
+        <div class="grid">
+          <details>
+            <summary>Does it work on scanned PDFs and photos?</summary>
+            <p>Yes. We handle scans, rotations, and merged cells. Try your files — the first one is free.</p>
+          </details>
+          <details>
+            <summary>Can you split costs by site/cost center?</summary>
+            <p>Yes. We allocate across properties and cost centers with transparent math.</p>
+          </details>
+          <details>
+            <summary>Where can I export the result?</summary>
+            <p>Excel/CSV or your AP systems. Batch/API available.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container" id="book">
+      <div style="display:flex; gap:16px; align-items:center; justify-content:space-between; flex-wrap:wrap;">
+        <div>
+          <strong>MiniAi Paperless</strong>
+          <div class="muted" id="footerNote">© 2025. Secure processing • Audit trail • GDPR/SOC‑ready</div>
+        </div>
+        <div class="cta-row">
+          <a class="btn" href="#">Privacy</a>
+          <a class="btn" href="#">Security</a>
+          <a class="btn primary" href="#" id="footerCTA">Book a 15‑min walkthrough</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const fileInput = document.getElementById('file');
+    const info = document.getElementById('fileInfo');
+    if (fileInput) {
+      fileInput.addEventListener('change', (e) => {
+        const files = e.target.files;
+        if (files && files.length) {
+          const names = Array.from(files).map(f => `${f.name} (${Math.round(f.size/1024)} KB)`).join(', ');
+          info.textContent = `Selected: ${names}`;
+        }
+      });
+    }
+  </script>
+</body>
+</html>
+
+
