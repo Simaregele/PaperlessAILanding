@@ -57,6 +57,7 @@
     @media (max-width: 980px) { .hero-grid{grid-template-columns:1fr} .features,.steps,.pricing,.trust{grid-template-columns:1fr 1fr} }
     @media (max-width: 640px) { .features,.steps,.pricing,.trust{grid-template-columns:1fr} .topbar-inner{flex-wrap:wrap} }
   </style>
+  <link rel="stylesheet" href="assets/styles.css" />
 </head>
 <body>
   <header class="topbar">
@@ -164,6 +165,16 @@
           <div id="fileInfo" class="muted" style="margin-top:8px"></div>
         </div>
 
+        <div id="emailCapture" class="uploader" style="display:none; margin-top:12px">
+          <p><strong>Куда отправить результат распознавания?</strong></p>
+          <div style="display:flex; gap:8px; flex-wrap:wrap; justify-content:center">
+            <input type="email" id="workEmail" placeholder="рабочий e‑mail" style="padding:12px 14px; border:1px solid var(--border); border-radius:12px; min-width:260px">
+            <button class="btn primary" id="btnSaveEmail">Продолжить</button>
+          </div>
+          <p class="hint" id="emailHint">Пожалуйста, укажите корпоративный адрес (не Gmail/Outlook/Yahoo/и т. п.).</p>
+          <div id="emailMsg" class="muted" style="margin-top:8px"></div>
+        </div>
+
         <div class="cta-row" style="margin-top:16px">
           <a class="btn primary" href="#" id="ctaConvert">Convert my bill</a>
           <a class="btn" href="#" id="ctaAlt">Batch/API for multi‑site</a>
@@ -250,19 +261,7 @@
     </div>
   </footer>
 
-  <script>
-    const fileInput = document.getElementById('file');
-    const info = document.getElementById('fileInfo');
-    if (fileInput) {
-      fileInput.addEventListener('change', (e) => {
-        const files = e.target.files;
-        if (files && files.length) {
-          const names = Array.from(files).map(f => `${f.name} (${Math.round(f.size/1024)} KB)`).join(', ');
-          info.textContent = `Selected: ${names}`;
-        }
-      });
-    }
-  </script>
+  <script src="assets/shared.js"></script>
 </body>
 </html>
 
