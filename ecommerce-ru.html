@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Счета поставщиков → CSV/Excel | SKU и характеристики</title>
+  <meta name="description" content="Преобразуем PDF-счета поставщиков в построчный CSV/Excel. Извлекаем SKU и характеристики (цвет, бренд, размер). Точность 70% на старте. Поддержка нестандартных инвойсов.">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --fg: #1f2937;
+      --muted: #6b7280;
+      --primary: #3b82f6;
+      --secondary: #9333ea;
+      --radius: 14px;
+      --shadow: 0 8px 24px rgba(0,0,0,0.06);
+    }
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--fg);
+      background: var(--bg);
+      line-height: 1.7;
+    }
+    header, footer {
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 1.2rem 2rem;
+    }
+    header .brand {
+      font-weight: 700;
+      font-size: 1.25rem;
+    }
+    main {
+      padding: 3rem 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    h1, h2, h3 { margin: .5em 0; line-height: 1.3; }
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 1.75rem; }
+    h3 { font-size: 1.25rem; }
+    .eyebrow { color: var(--muted); font-size: .9rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .hero { text-align: center; padding: 5rem 1rem 4rem; background: linear-gradient(to bottom, #f9fafb, #fff); border-radius: var(--radius); box-shadow: var(--shadow); }
+    .hero p { max-width: 650px; margin: 1rem auto; font-size: 1.1rem; color: #374151; }
+    .btn {
+      display: inline-block;
+      padding: .9rem 1.6rem;
+      border-radius: var(--radius);
+      text-decoration: none;
+      margin: .5rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+    .btn.primary { background: var(--primary); color: white; }
+    .btn.primary:hover { background: #1d4ed8; }
+    .btn.secondary { border: 2px solid var(--primary); color: var(--primary); background: white; }
+    .btn.secondary:hover { background: #eff6ff; }
+    .section { padding: 4rem 1rem; }
+    .grid { display: grid; gap: 2rem; }
+    .cards { display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); }
+    .card {
+      background: white;
+      padding: 2rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      transition: transform 0.2s ease;
+    }
+    .card:hover { transform: translateY(-4px); }
+    table {
+      border-collapse: collapse;
+      margin: 2rem auto;
+      width: 100%;
+      max-width: 900px;
+      background: white;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      font-size: 0.95rem;
+    }
+    th, td { padding: 1rem 1.2rem; text-align: left; border-bottom: 1px solid #f3f4f6; }
+    th { background: #f9fafb; font-weight: 600; text-transform: uppercase; font-size: 0.85rem; }
+    details { background: white; padding: 1rem 1.25rem; border-radius: var(--radius); box-shadow: var(--shadow); }
+    footer { text-align: center; font-size: .9rem; }
+    footer a { color: white; text-decoration: underline; margin: 0 .5rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">MiniAi Paperless</div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="eyebrow">Интернет-магазины • Дистрибьюторы • Ритейл • Производство • Логистика • HoReCa</div>
+      <h1>Счета поставщиков → CSV/Excel (SKU, характеристики, мультивалюта)</h1>
+      <p>Извлекаем данные даже из нестандартных PDF-счетов: SKU, бренд, цвет, размер, упаковка. Средняя точность — 70% на старте.</p>
+      <div>
+        <a href="#uploader" class="btn primary">Загрузить счет — бесплатно</a>
+        <a href="#pricing" class="btn secondary">Пакетная обработка и API</a>
+      </div>
+      <p class="eyebrow">Безопасная обработка • Аудит действий</p>
+    </section>
+
+    <!-- TABLE -->
+    <section class="section">
+      <h2>Пример данных</h2>
+      <table>
+        <thead>
+          <tr><th>Артикул</th><th>Бренд</th><th>Цвет</th><th>Размер</th><th>Кол-во</th><th>Ед.</th><th>Цена</th><th>Валюта</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>TSHIRT-123</td><td>Nike</td><td>Черный</td><td>L</td><td>10</td><td>шт</td><td>2490.00</td><td>RUB</td></tr>
+          <tr><td>DRESS-456</td><td>Zara</td><td>Красный</td><td>M</td><td>5</td><td>шт</td><td>4990.00</td><td>RUB</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="section">
+      <h2>Почему это работает</h2>
+      <div class="cards">
+        <div class="card"><h3>Себестоимость и закупочные цены</h3><p>Количества, скидки, валюты — всё прозрачно в CSV.</p></div>
+        <div class="card"><h3>Сопоставление артикулов</h3><p>Нормализация поставщиков и артикулов, подсветка расхождений.</p></div>
+        <div class="card"><h3>Характеристики товаров</h3><p>Цвет, бренд, размер, упаковка — извлекаем ключевые атрибуты.</p></div>
+        <div class="card"><h3>CSV/Excel для учета</h3><p>Файл легко загружается в любые учетные или BI-системы.</p></div>
+        <div class="card"><h3>Работа с любыми инвойсами</h3><p>Поддержка разных макетов, сканов, нестандартных таблиц.</p></div>
+      </div>
+    </section>
+
+    <!-- STEPS -->
+    <section class="section" id="uploader">
+      <h2>Как это работает</h2>
+      <div class="grid">
+        <div class="card"><h3>Загрузите счета поставщиков</h3><p>Одиночные и пакетные загрузки — без шаблонов.</p></div>
+        <div class="card"><h3>Авто-распознавание SKU и атрибутов</h3><p>Извлекаем SKU, бренды, цвета, размеры. Точность 70% на старте.</p></div>
+        <div class="card"><h3>Экспорт в CSV/Excel</h3><p>Файл готов к загрузке в учетные и аналитические системы.</p></div>
+      </div>
+      <p style="margin-top:1rem; text-align:center" class="eyebrow">Первый файл бесплатно. Далее потребуется корпоративный e-mail.</p>
+      <div style="text-align:center; margin-top:1rem;">
+        <a href="#" class="btn primary">Создать построчный CSV</a>
+        <a href="#" class="btn secondary">Шаблон COGS</a>
+      </div>
+    </section>
+
+    <!-- CASES -->
+    <section class="section">
+      <h2>Реальные результаты</h2>
+      <div class="cards">
+        <div class="card"><strong>Ритейл-сеть:</strong> Сократили время на обработку 3-страничного счета с 35 минут до 15 минут.<p>Команда из 30 сотрудников ежедневно экономит 10+ часов.</p></div>
+        <div class="card"><strong>Онлайн-магазин одежды:</strong> Автоматически извлекаем бренд, цвет и размер.<p>Точность 70% на старте, данные сразу готовы для учета.</p></div>
+        <div class="card"><strong>Производственная компания:</strong> Автоматизировали сверку артикулов.<p>Убрали до 80% ошибок при вводе сырья и комплектующих.</p></div>
+        <div class="card"><strong>Логистическая компания:</strong> Сократили время на подготовку отчетов в 2 раза.<p>CSV-выгрузки сразу подхватываются BI-системой.</p></div>
+        <div class="card"><strong>HoReCa:</strong> Обработка накладных ускорилась в 4 раза.<p>Менеджеры теперь тратят минуты, а не часы на учет закупок.</p></div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="section" id="pricing">
+      <h2>Начните бесплатно, масштабируйтесь по мере роста</h2>
+      <div class="cards">
+        <div class="card"><h3>Старт</h3><p>Первый файл бесплатно. Отлично для быстрой проверки. Логин не нужен.</p></div>
+        <div class="card"><h3>Pro</h3><p>Пакет и API. Для команд и групп компаний. Приоритетная поддержка.</p></div>
+        <div class="card"><h3>Дополнения</h3><p>Кастомные маппинги: единицы, налоги/сборы, нормализация поставщиков.</p></div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section">
+      <h2>Частые вопросы</h2>
+      <div class="grid">
+        <details><summary>Работает ли на сканах и фото?</summary><p>Да. Обрабатываем сканы, повороты и слитые ячейки.</p></details>
+        <details><summary>Можно автоматически извлекать характеристики?</summary><p>Да. SKU, бренды, цвета, размеры, упаковки. Средняя точность — 70%.</p></details>
+        <details><summary>Куда можно экспортировать результат?</summary><p>CSV/Excel. Подходит для загрузки в учетные и BI-системы.</p></details>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025. Безопасная обработка • Аудит • GDPR/SOC-ready</p>
+    <div style="margin-top:.5rem;">
+      <a href="#">Конфиденциальность</a>
+      <a href="#">Безопасность</a>
+      <a href="#" class="btn primary">Записаться на 15-мин демо</a>
+    </div>
+  </footer>
+</body>
+</html>
