@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title id="metaTitle">Invoice PDF → CSV/Excel for Restaurants | Free First File</title>
-  <meta id="metaDesc" name="description" content="Turn restaurant supplier invoices into clean CSV/Excel with line‑items, VAT, tips & discounts. Unit normalization. Export to QuickBooks/Xero. First file is free."/>
+  <title id="metaTitle">AI‑распознавание счетов → CSV/Excel для любых отраслей</title>
+  <meta id="metaDesc" name="description" content="Извлекаем строки из PDF‑счетов для ритейла, e‑commerce, B2B, логистики и HoReCa. Готово для учета и аналитики в CSV/Excel."/>
   <link rel="stylesheet" href="assets/styles.css" />
 </head>
 <body>
@@ -23,14 +23,13 @@
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <span class="eyebrow" id="eyebrow">Restaurants • HoReCa</span>
-          <h1 id="heroH1">Invoice PDF → CSV/Excel for Restaurants (Line‑Items, Taxes, Tips)</h1>
-          <p class="subhead" id="subhead">Turn supplier invoices into clean spreadsheets ready for food cost &amp; COGS. Works on scans, rotated pages, and merged cells.</p>
+          <span class="eyebrow" id="eyebrow">Ритейл • E‑commerce • B2B • Логистика • HoReCa</span>
+          <h1 id="heroH1">AI‑распознавание счетов → CSV/Excel для любых отраслей</h1>
+          <p class="subhead" id="subhead">Извлекаем строки, SKU и атрибуты из PDF‑счетов. Готово для учета и аналитики. Первый файл — бесплатно.</p>
           <div class="cta-row">
-            <a class="btn primary" href="#uploader" id="ctaPrimary">Upload invoice — first file free</a>
-            <a class="btn" href="#book" id="ctaSecondary">Book a 15‑min walkthrough</a>
+            <a class="btn primary" href="/ecommerce-ru.html" id="ctaPrimary">Перейти в продукт</a>
           </div>
-          <p class="muted" style="margin-top:10px" id="trustNote">GDPR/SOC‑ready processing • Used by F&amp;B teams</p>
+          <p class="muted" style="margin-top:10px" id="trustNote">Безопасная обработка • Аудит действий</p>
         </div>
         <div>
           <div class="viz">
@@ -67,82 +66,80 @@
     <!-- FEATURES -->
     <section class="section">
       <div class="container">
-        <div class="kicker">Why it works</div>
-        <h2 class="h2" id="featuresTitle">From messy scans to COGS‑ready spreadsheets</h2>
+        <div class="kicker">Почему это работает</div>
+        <h2 class="h2" id="featuresTitle">От PDF к данным для учета и аналитики</h2>
         <div class="features">
           <div class="card">
-            <div class="kicker" id="f1Kicker">Line‑items</div>
-            <h3 id="f1Title">Extract tables with units</h3>
-            <p class="muted" id="f1Text">kg, packs, cases → auto‑normalized to your base units.</p>
+            <div class="kicker" id="f1Kicker">Построчно</div>
+            <h3 id="f1Title">Извлекаем таблицы и единицы измерения</h3>
+            <p class="muted" id="f1Text">кг, упаковки, коробки — нормализуем к базовым единицам.</p>
           </div>
           <div class="card">
-            <div class="kicker" id="f2Kicker">Taxes & Tips</div>
-            <h3 id="f2Title">Detect VAT, tips, discounts</h3>
-            <p class="muted" id="f2Text">Split by category for COGS and accounting.</p>
+            <div class="kicker" id="f2Kicker">Налоги и сборы</div>
+            <h3 id="f2Title">Выделяем НДС, чаевые, скидки</h3>
+            <p class="muted" id="f2Text">Разделяем по категориям для учета и отчетности.</p>
           </div>
           <div class="card">
-            <div class="kicker" id="f3Kicker">Exports</div>
-            <h3 id="f3Title">One‑click QuickBooks/Xero/CSV</h3>
-            <p class="muted" id="f3Text">Push clean vendor bills in minutes. No template needed.</p>
+            <div class="kicker" id="f3Kicker">Экспорт</div>
+            <h3 id="f3Title">CSV/Excel и учетные системы</h3>
+            <p class="muted" id="f3Text">Готово для загрузки в ваши процессы и отчеты.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- HOW IT WORKS + UPLOADER -->
-    <section class="section" id="uploader">
-      <div class="container">
-        <div class="kicker">How it works</div>
-        <h2 class="h2" id="stepsTitle">Upload → Parse → Export</h2>
-        <div class="steps">
-          <div class="step">
-            <h3 id="s1Title">Upload your invoice</h3>
-            <p class="muted" id="s1Text">Scans, rotated pages, merged cells — all good.</p>
-          </div>
-          <div class="step">
-            <h3 id="s2Title">We parse line‑items</h3>
-            <p class="muted" id="s2Text">Units normalized, VAT/tips/discounts detected.</p>
-          </div>
-          <div class="step">
-            <h3 id="s3Title">Export where you need</h3>
-            <p class="muted" id="s3Text">QuickBooks, Xero, or CSV for inventory/COGS.</p>
-          </div>
-        </div>
-
-        <div class="uploader" aria-live="polite">
-          <p><strong>Drag & drop</strong> your PDF here or <label style="text-decoration:underline; cursor:pointer"><input type="file" id="file" accept="application/pdf,image/*" hidden> browse</label></p>
-          <p class="hint" id="uploadHint">First file is free. Subsequent files require a corporate email.</p>
-          <div id="fileInfo" class="muted" style="margin-top:8px"></div>
-        </div>
-
-        <div id="emailCapture" class="uploader" style="display:none; margin-top:12px">
-          <p><strong>Куда отправить результат распознавания?</strong></p>
-          <div style="display:flex; gap:8px; flex-wrap:wrap; justify-content:center">
-            <input type="email" id="workEmail" placeholder="рабочий e‑mail" style="padding:12px 14px; border:1px solid var(--border); border-radius:12px; min-width:260px">
-            <button class="btn primary" id="btnSaveEmail">Продолжить</button>
-          </div>
-          <p class="hint" id="emailHint">Пожалуйста, укажите корпоративный адрес (не Gmail/Outlook/Yahoo/и т. п.).</p>
-          <div id="emailMsg" class="muted" style="margin-top:8px"></div>
-        </div>
-
-        <div class="cta-row" style="margin-top:16px">
-          <a class="btn primary" href="#" id="ctaConvert">Convert my invoice</a>
-          <a class="btn" href="#book" id="ctaAlt">Get Batch/API for chains</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- TRUST / INTEGRATIONS -->
+    <!-- SAMPLE TABLE -->
     <section class="section">
       <div class="container">
-        <div class="kicker">Integrations</div>
-        <h2 class="h2" id="integrationsTitle">Works with your accounting stack</h2>
-        <div class="trust" id="trustPills">
-          <div class="pill">QuickBooks</div>
-          <div class="pill">Xero</div>
-          <div class="pill">CSV / Excel</div>
-          <div class="pill">Batch</div>
-          <div class="pill">API</div>
+        <div class="kicker">Пример</div>
+        <h2 class="h2">Пример данных</h2>
+        <div class="viz">
+          <div class="sheet">
+            <table class="table" aria-label="Пример CSV">
+              <thead>
+                <tr><th>Артикул</th><th>Бренд</th><th>Цвет</th><th>Размер</th><th>Кол-во</th><th>Ед.</th><th>Цена</th><th>Валюта</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>TSHIRT-123</td><td>Nike</td><td>Черный</td><td>L</td><td>10</td><td>шт</td><td>2490.00</td><td>RUB</td></tr>
+                <tr><td>DRESS-456</td><td>Zara</td><td>Красный</td><td>M</td><td>5</td><td>шт</td><td>4990.00</td><td>RUB</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CASES -->
+    <section class="section">
+      <div class="container">
+        <div class="kicker">Кейсы</div>
+        <h2 class="h2">Реальные результаты</h2>
+        <div class="features">
+          <div class="card">
+            <div class="kicker">Ритейл‑сеть</div>
+            <h3>С 35 минут до 15 минут на 3‑страничный счет</h3>
+            <p class="muted">Команда из 30 сотрудников ежедневно экономит 10+ часов.</p>
+          </div>
+          <div class="card">
+            <div class="kicker">Онлайн‑магазин одежды</div>
+            <h3>Автоматически извлекаем бренд, цвет и размер</h3>
+            <p class="muted">Точность 70% на старте, данные готовы для учета.</p>
+          </div>
+          <div class="card">
+            <div class="kicker">Производственная компания</div>
+            <h3>Сверка артикулов между 5 поставщиками</h3>
+            <p class="muted">Снизили ошибки ввода сырья и комплектующих до 80%.</p>
+          </div>
+          <div class="card">
+            <div class="kicker">Логистическая компания</div>
+            <h3>В 2 раза быстрее готовим отчеты по поставкам</h3>
+            <p class="muted">CSV‑выгрузки сразу подхватываются BI‑системой.</p>
+          </div>
+          <div class="card">
+            <div class="kicker">HoReCa</div>
+            <h3>Обработка накладных ускорилась в 4 раза</h3>
+            <p class="muted">Менеджеры тратят минуты, а не часы на учет закупок.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -150,23 +147,23 @@
     <!-- PRICING (teaser) -->
     <section class="section">
       <div class="container">
-        <div class="kicker">Pricing</div>
-        <h2 class="h2">Start free, scale when ready</h2>
+        <div class="kicker">Тарифы</div>
+        <h2 class="h2">Начните бесплатно, масштабируйтесь по мере роста</h2>
         <div class="pricing">
           <div class="card">
-            <div class="kicker">Starter</div>
-            <h3 id="p1Title">First file free</h3>
-            <p class="muted" id="p1Text">Great for quick validation. No login required.</p>
+            <div class="kicker">Старт</div>
+            <h3 id="p1Title">Первый файл бесплатно</h3>
+            <p class="muted" id="p1Text">Отлично для быстрой проверки. Логин не нужен.</p>
           </div>
           <div class="card">
             <div class="kicker">Pro</div>
-            <h3 id="p2Title">Batch &amp; API</h3>
-            <p class="muted" id="p2Text">For teams &amp; multi‑entity groups. Priority support.</p>
+            <h3 id="p2Title">Пакет и API</h3>
+            <p class="muted" id="p2Text">Для команд и групп компаний. Приоритетная поддержка.</p>
           </div>
           <div class="card">
-            <div class="kicker">Add‑ons</div>
-            <h3 id="p3Title">Custom mappings</h3>
-            <p class="muted" id="p3Text">Units, taxes/fees, vendor normalization.</p>
+            <div class="kicker">Дополнения</div>
+            <h3 id="p3Title">Кастомные маппинги</h3>
+            <p class="muted" id="p3Text">Единицы, налоги/сборы, нормализация поставщиков.</p>
           </div>
         </div>
       </div>
@@ -176,19 +173,19 @@
     <section class="section">
       <div class="container">
         <div class="kicker">FAQ</div>
-        <h2 class="h2">Common questions</h2>
+        <h2 class="h2">Частые вопросы</h2>
         <div class="grid">
           <details>
-            <summary>Does it work on scanned PDFs and photos?</summary>
-            <p>Yes. We handle scans, rotations, and merged cells. Try your file — the first one is free.</p>
+            <summary>Работает ли на сканах и фото?</summary>
+            <p>Да. Обрабатываем сканы, повороты и слитые ячейки. Попробуйте — первый файл бесплатно.</p>
           </details>
           <details>
-            <summary>Can you normalize cases → units?</summary>
-            <p>Yes. We map kg/packs/cases to your base units and keep the math transparent in CSV.</p>
+            <summary>Нормализуете ли единицы измерения?</summary>
+            <p>Да. Приводим кг/упаковки/коробки к базовым единицам с прозрачной логикой в CSV.</p>
           </details>
           <details>
-            <summary>Where can I export the result?</summary>
-            <p>QuickBooks, Xero, or CSV. Batch/API available for larger teams.</p>
+            <summary>Куда можно экспортировать результат?</summary>
+            <p>CSV/Excel или учетные системы. Пакет и API доступны для больших команд.</p>
           </details>
         </div>
       </div>
@@ -200,217 +197,19 @@
       <div style="display:flex; gap:16px; align-items:center; justify-content:space-between; flex-wrap:wrap;">
         <div>
           <strong>MiniAi Paperless</strong>
-          <div class="muted" id="footerNote">© 2025. Secure processing • Audit trail • GDPR/SOC‑ready</div>
+          <div class="muted" id="footerNote">© 2025. Безопасная обработка • Аудит • GDPR/SOC‑ready</div>
         </div>
         <div class="cta-row">
-          <a class="btn" href="#">Privacy</a>
-          <a class="btn" href="#">Security</a>
-          <a class="btn primary" href="#" id="footerCTA">Book a 15‑min walkthrough</a>
+          <a class="btn" href="#">Конфиденциальность</a>
+          <a class="btn" href="#">Безопасность</a>
+          <a class="btn primary" href="#" id="footerCTA">Записаться на 15‑мин демо</a>
         </div>
       </div>
     </div>
   </footer>
 
   <script>
-    // Audience copy map
-    const COPY = {
-      restaurants: {
-        eyebrow: 'Restaurants • HoReCa',
-        title: 'Invoice PDF → CSV/Excel for Restaurants (Line‑Items, Taxes, Tips)',
-        sub: 'Turn supplier invoices into clean spreadsheets ready for food cost & COGS. Works on scans, rotated pages, and merged cells.',
-        ctas: { primary: 'Upload invoice — first file free', secondary: 'Book a 15‑min walkthrough', alt: 'Get Batch/API for chains', convert: 'Convert my invoice' },
-        features: [
-          {k:'Line‑items', t:'Extract tables with units', d:'kg, packs, cases → auto‑normalized to your base units.'},
-          {k:'Taxes & Tips', t:'Detect VAT, tips, discounts', d:'Split by category for COGS and accounting.'},
-          {k:'Exports', t:'One‑click QuickBooks/Xero/CSV', d:'Push clean vendor bills in minutes. No template needed.'}
-        ],
-        steps: {
-          title: 'Upload → Parse → Export',
-          s1: {t:'Upload your invoice', d:'Scans, rotated pages, merged cells — all good.'},
-          s2: {t:'We parse line‑items', d:'Units normalized, VAT/tips/discounts detected.'},
-          s3: {t:'Export where you need', d:'QuickBooks, Xero, or CSV for inventory/COGS.'}
-        },
-        integrationsTitle: 'Works with your accounting stack',
-        pills: ['QuickBooks','Xero','CSV / Excel','Batch','API'],
-        trustNote: 'GDPR/SOC‑ready processing • Used by F&B teams',
-        meta: {
-          title: 'Invoice PDF → CSV/Excel for Restaurants | Free First File',
-          desc: 'Turn restaurant supplier invoices into clean CSV/Excel with line‑items, VAT, tips & discounts. Unit normalization. Export to QuickBooks/Xero. First file is free.'
-        },
-        sample: [
-          ['Tomatoes Roma','5','kg','2.10','10%'],
-          ['Olive Oil 5L','2','case','24.90','10%'],
-          ['Bread Ciabatta','24','pcs','0.65','0%']
-        ]
-      },
-      accountants: {
-        eyebrow: 'BPO Accountants • Bookkeeping Firms',
-        title: 'Batch Invoice OCR for Accountants (Multi‑Client, Line‑Items)',
-        sub: 'Turn messy client invoices into validated bills with GL hints and vendor normalization.',
-        ctas: { primary: 'Upload invoices — first batch free', secondary: 'Get 7‑day Pro trial', alt: 'SLA & API for BPO', convert: 'Convert 50+ PDFs → One Excel' },
-        features: [
-          {k:'Bulk', t:'50+ PDFs → 1 Excel', d:'Include client tags to keep books tidy.'},
-          {k:'GL & Vendors', t:'GL hints & vendor cleanup', d:'Line‑items, taxes, currencies, and supplier normalization.'},
-          {k:'Exports', t:'QuickBooks/Xero/CSV', d:'Reviewer mode & audit trail for approvals.'}
-        ],
-        steps: {
-          title: 'Import → Review → Export',
-          s1: {t:'Upload client invoices', d:'Bulk upload or drag‑drop folders.'},
-          s2: {t:'Validate with GL hints', d:'Normalize vendor names, currencies, and taxes.'},
-          s3: {t:'Export to accounting', d:'QuickBooks/Xero CSV templates ready.'}
-        },
-        integrationsTitle: 'Built for BPO workflows',
-        pills: ['QuickBooks','Xero','CSV / Excel','Reviewer','Audit Trail'],
-        trustNote: 'SOC‑friendly logs • Reviewer overrides',
-        meta: {
-          title: 'Batch Invoice OCR for Accountants | First Batch Free',
-          desc: 'Bulk convert invoices with line‑items, GL hints, and vendor normalization. Export to QuickBooks/Xero/CSV. Reviewer & audit trail.'
-        },
-        sample: [
-          ['Vendor','Gross','Tax','Currency','GL'],
-          ['Office Supplies Ltd','120.00','20%','GBP','6200'],
-          ['Cloud Hosting Inc','89.00','0%','USD','7310']
-        ]
-      },
-      utilities: {
-        eyebrow: 'Property • Facility Management',
-        title: 'Utility & Energy Invoices → CSV (Multi‑Site, Meter Readings)',
-        sub: 'Parse electricity, water, gas, and waste invoices into clean CSV with site allocation and anomaly flags.',
-        ctas: { primary: 'Upload utility bill — free', secondary: 'Get anomaly report', alt: 'Batch/API for multi‑site', convert: 'Convert my bill' },
-        features: [
-          {k:'Meters', t:'Extract meter readings', d:'Tariffs, taxes, and fees captured reliably.'},
-          {k:'Allocation', t:'Split by site/cost center', d:'Auto allocate across properties/centers.'},
-          {k:'Exports', t:'Excel/CSV & AP systems', d:'Batch/API for property & facility teams.'}
-        ],
-        steps: {
-          title: 'Collect → Parse → Allocate',
-          s1: {t:'Upload last month’s bills', d:'Electricity, water, gas, waste.'},
-          s2: {t:'Parse meters & tariffs', d:'Catch anomalies and abnormal fees.'},
-          s3: {t:'Allocate & export', d:'Split by site/cost center to CSV.'}
-        },
-        integrationsTitle: 'Works with your AP & energy tools',
-        pills: ['Excel','CSV','Batch','API','Anomaly Flags'],
-        trustNote: 'Secure processing • Logs retained',
-        meta: {
-          title: 'Utility & Energy Invoices → CSV | Multi‑Site Allocation',
-          desc: 'Extract meter readings, tariffs, taxes & fees; allocate by site/cost center. Anomaly flags. Batch/API.'
-        },
-        sample: [
-          ['Meter','Read','Unit','Tariff','Tax'],
-          ['E‑123','15420','kWh','TOU‑B','5%'],
-          ['W‑882','310','m³','Fixed','0%']
-        ]
-      },
-      ecommerce: {
-        eyebrow: 'Amazon/Shopify Sellers • Aggregators',
-        title: 'Supplier Invoices → QuickBooks/CSV (COGS, Multi‑Currency)',
-        sub: 'Turn supplier PDFs into itemized bills and COGS with SKU mapping and VAT/GST handling.',
-        ctas: { primary: 'Upload invoice — free', secondary: 'Batch & API for aggregators', alt: 'COGS workbook', convert: 'Create itemized CSV' },
-        features: [
-          {k:'COGS', t:'Line‑items & purchase prices', d:'Quantities, currencies, and discounts.'},
-          {k:'SKUs', t:'SKU mapping & vendor cleanup', d:'Normalize supplier names and SKUs.'},
-          {k:'Exports', t:'QuickBooks/Xero/CSV', d:'Ready for monthly close and inventory.'}
-        ],
-        steps: {
-          title: 'Upload → Map SKUs → Export',
-          s1: {t:'Upload supplier PDFs', d:'Bulk or single — we handle both.'},
-          s2: {t:'Map SKUs automatically', d:'Catch mismatches and normalize vendors.'},
-          s3: {t:'Export COGS/bills', d:'QuickBooks, Xero, or CSV.'}
-        },
-        integrationsTitle: 'Built for e‑commerce ops & finance',
-        pills: ['QuickBooks','Xero','CSV / Excel','SKU Mapping','Multi‑Currency'],
-        trustNote: 'Secure processing • Audit trail',
-        meta: {
-          title: 'Supplier Invoices → QuickBooks/CSV | COGS & SKUs',
-          desc: 'Itemized bills with COGS, SKU mapping, vendor normalization, and VAT/GST. Batch & API.'
-        },
-        sample: [
-          ['SKU','Qty','Unit','Price','Currency'],
-          ['BX‑OIL‑5L','2','case','24.90','EUR'],
-          ['BR‑CBT‑24','24','pcs','0.65','EUR']
-        ]
-      },
-      freight: {
-        eyebrow: 'Freight • Parcel Audit & Pay',
-        title: 'Carrier & Freight Invoices → CSV (Thousands of Line‑Items)',
-        sub: 'Extract accessorials, surcharges, and rate details for parcel & freight audits.',
-        ctas: { primary: 'Upload carrier invoice — free', secondary: 'Run accuracy benchmark', alt: 'Batch/API with SLA', convert: 'Extract rate details' },
-        features: [
-          {k:'Scale', t:'1,000s of rows — fast', d:'Built for complex, multi‑page tables.'},
-          {k:'Accessorials', t:'Fuel & surcharge tagging', d:'Detect adjustments and codes.'},
-          {k:'Exports', t:'CSV for audit rules', d:'Normalize carrier names and fields.'}
-        ],
-        steps: {
-          title: 'Upload → Extract → Audit',
-          s1: {t:'Upload 5 sample invoices', d:'LTL/FTL, parcel, ocean, air.'},
-          s2: {t:'Extract rates & fees', d:'Accessorials, fuel, adjustments.'},
-          s3: {t:'Export for audit tools', d:'CSV ready for your rules.'}
-        },
-        integrationsTitle: 'Made for logistics finance teams',
-        pills: ['CSV','Batch','API','Benchmark','SLA'],
-        trustNote: 'SLA available for audit providers',
-        meta: {
-          title: 'Carrier & Freight Invoices → CSV | Audit‑Ready',
-          desc: 'Extract accessorials, surcharges, and rate details. Thousands of rows. Batch/API. Accuracy benchmark.'
-        },
-        sample: [
-          ['Shipment','Charge','Type','Adj','Note'],
-          ['1Z..123','12.50','Fuel','+0.80','Zone 5'],
-          ['PRO9981','45.00','Accessorial','+5.00','Residential']
-        ]
-      }
-    };
-
-    // Hook elements
-    const els = {
-      eyebrow: document.getElementById('eyebrow'),
-      h1: document.getElementById('heroH1'),
-      sub: document.getElementById('subhead'),
-      trustNote: document.getElementById('trustNote'),
-      ctaPrimary: document.getElementById('ctaPrimary'),
-      ctaSecondary: document.getElementById('ctaSecondary'),
-      stepsTitle: document.getElementById('stepsTitle'),
-      s1t: document.getElementById('s1Title'), s1d: document.getElementById('s1Text'),
-      s2t: document.getElementById('s2Title'), s2d: document.getElementById('s2Text'),
-      s3t: document.getElementById('s3Title'), s3d: document.getElementById('s3Text'),
-      f1k: document.getElementById('f1Kicker'), f1t: document.getElementById('f1Title'), f1d: document.getElementById('f1Text'),
-      f2k: document.getElementById('f2Kicker'), f2t: document.getElementById('f2Title'), f2d: document.getElementById('f2Text'),
-      f3k: document.getElementById('f3Kicker'), f3t: document.getElementById('f3Title'), f3d: document.getElementById('f3Text'),
-      convert: document.getElementById('ctaConvert'), alt: document.getElementById('ctaAlt'),
-      integrationsTitle: document.getElementById('integrationsTitle'), pills: document.getElementById('trustPills'),
-      metaTitle: document.getElementById('metaTitle'), metaDesc: document.getElementById('metaDesc'),
-      sampleRows: document.getElementById('sampleRows')
-    };
-
-    function setAudience(key){
-      const C = COPY[key];
-      if(!C) return;
-      els.eyebrow.textContent = C.eyebrow;
-      els.h1.textContent = C.title;
-      els.sub.textContent = C.sub;
-      els.trustNote.textContent = C.trustNote;
-      els.ctaPrimary.textContent = C.ctas.primary;
-      els.ctaSecondary.textContent = C.ctas.secondary;
-      els.convert.textContent = C.ctas.convert;
-      els.alt.textContent = C.ctas.alt;
-      els.stepsTitle.textContent = C.steps.title;
-      els.s1t.textContent = C.steps.s1.t; els.s1d.textContent = C.steps.s1.d;
-      els.s2t.textContent = C.steps.s2.t; els.s2d.textContent = C.steps.s2.d;
-      els.s3t.textContent = C.steps.s3.t; els.s3d.textContent = C.steps.s3.d;
-      els.f1k.textContent = C.features[0].k; els.f1t.textContent = C.features[0].t; els.f1d.textContent = C.features[0].d;
-      els.f2k.textContent = C.features[1].k; els.f2t.textContent = C.features[1].t; els.f2d.textContent = C.features[1].d;
-      els.f3k.textContent = C.features[2].k; els.f3t.textContent = C.features[2].t; els.f3d.textContent = C.features[2].d;
-      els.integrationsTitle.textContent = C.integrationsTitle;
-      els.pills.innerHTML = C.pills.map(p=>`<div class="pill">${p}</div>`).join('');
-      els.metaTitle.textContent = C.meta.title; els.metaDesc.setAttribute('content', C.meta.desc);
-      els.sampleRows.innerHTML = C.sample.map(r=>`<tr>${r.map(x=>`<td>${x}</td>`).join('')}</tr>`).join('');
-      document.title = C.meta.title; // also set real title
-    }
-
-    // Init static restaurant content once
-    setAudience('restaurants');
-
-    
+    // Статическая главная без переключения аудиторий
   </script>
   <script src="assets/shared.js"></script>
 </body>
